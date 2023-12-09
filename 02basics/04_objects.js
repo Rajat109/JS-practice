@@ -16,7 +16,7 @@ const newUser = {
     }
 }
 
-console.log(newUser.username.fullname.firstname);
+//console.log(newUser.username.fullname.firstname);
 
 const obj1 = {
     1: "a",
@@ -29,8 +29,8 @@ const obj3 = Object.assign({}, obj1, obj2) // we will use this method to merge t
 
 const obj4  = {...obj1, ...obj2} // using spread operator to merge the objects 
 
-console.log(obj4);
-console.log(obj1);
+// console.log(obj4);
+// console.log(obj1);
 
 
 // object with an array of objects inside it
@@ -53,12 +53,23 @@ const users = [
     },
 ]
 
-console.log(users[1].email);
+// console.log(users[1].email);
 
-console.log(Object.keys(user)); // returns all the keys in an array
+// console.log(Object.keys(user)); // returns all the keys in an array
 
-console.log(Object.values(user)); // returns all the values in an array
+// console.log(Object.values(user)); // returns all the values in an array
 
-console.log(Object.entries(user)); // converts all the key-value pairs in arrays
+// console.log(Object.entries(user)); // converts all the key-value pairs in arrays
 
-console.log(Object.hasOwnProperty("name")); // checks whether the object has given property or not
+// console.log(Object.hasOwnProperty("name")); // checks whether the object has given property or not
+
+
+const course = {
+    courseName: "JS",
+    price: 999,
+    instructor: "rajat"
+}
+
+const {instructor} = course // method to destructure the object for the ease of access
+
+console.log(instructor);
