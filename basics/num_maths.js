@@ -14,10 +14,10 @@ const hundreds = 100000
 
 // ************* MATHS *******************
 
-// console.log(Math.abs(-4))
-// console.log(Math.round(4.49))
-// console.log(Math.ceil(4.49)) 
-// console.log(Math.floor(4.49)) 
+// console.log(Math.abs(-4))  // output: 4
+// console.log(Math.round(4.49)) // output: 4
+// console.log(Math.ceil(4.49))  // output: 5
+// console.log(Math.floor(4.49)) // output: 4
 
 
 console.log((Math.random())); // It gives random value between 0 and 1
