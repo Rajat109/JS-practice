@@ -61,7 +61,7 @@ const users = [
 
 // console.log(Object.entries(user)); // converts all the key-value pairs in arrays
 
-// console.log(Object.hasOwnProperty("name")); // checks whether the object has given property or not
+console.log(user.hasOwnProperty("isLoggedIn")); // checks whether the object has given property or not
 
 
 const course = {
