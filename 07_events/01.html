@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // generally events run sequentially. But we will see exceptions here
+    
+    // lets add onclick event on the owl image
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert("OWL clicked")
+    // }
+
+    // we will use addEventListener that is the best approach
+
+    
+    // Below are the important properties of the events with interview perspective
+    
+    // type, timestamp, defaultPrevented, target, toElement, srcElement, currentTarget, 
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode
+    
+    // document.getElementById("owl").addEventListener('click',function(e){
+    //     console.log(e);
+    //     // alert("owl clicked again")
+    // }, false) 
+    // in the function addEventListener the third parameter is for event propagation and by default false
+
+    // event propagation 
+    // false => event bubbling
+    // true => event capturing
+
+    // lets understand with example
+
+    // document.getElementById("images").addEventListener('click',function(e){
+    //     console.log("clicked inside the UL");
+    // }, false) 
+
+    // document.getElementById("owl").addEventListener('click',function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation(); // this method is used to stop the propagation of the event and bubbling is prevented
+    // }, false) 
+
+    // when we click on the owl image both of the above scripts will run and the sequence of event will be inside out i.e. 
+    // 1. "owl clicked" 
+    // 2. "clicked inside the UL" will be logged
+    // and this is called event bubbling when the third parameter is kept false in both the scripts
+
+
+    // when we will set true in both the scripts then events will be captured and this is called event capturing
+    // output when clicked on owl would be
+    // 1. "clicked inside the UL"
+    // 2. "Owl clicked"
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     console.log("google clicked");
+    //     e.preventDefault() // this method is used to prevent the defalut behaviour
+    //     e.stopPropagation()
+    // })
+
+    // now lets do this task 
+    // when we click on an image it gets removed
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        // console.log(e.target.parentNode)
+        // let removeIt = e.target.parentNode
+        // removeIt.remove()
+        // the problem is here if we click on any list item then whole UL is getting removed
+        // to solve this problem:
+
+        console.log(e.target.tagName)
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        // the above problem where whole UL was getting removed because of clicking on LI element is called event Spilling
+    })
+
+
+</script>
+</html>
