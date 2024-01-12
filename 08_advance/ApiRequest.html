@@ -43,6 +43,7 @@
         </tbody>
       </table>
       <div id="card"></div>
+      <button id="display">Display</button>
 </body>
 
 <script>
@@ -52,17 +53,31 @@
 
     const xhr = new XMLHttpRequest();
     xhr.open('Get',url)
+    
+    let followers, photo, name;
+
     xhr.onreadystatechange = function(){
       console.log(xhr.readyState);
       if(xhr.readyState === 4){
         const data = JSON.parse(this.responseText)
         console.log(data.name);
+        photo = (data.avatar_url);
+        followers = data.followers;
+        name = data.name;
+        // console.log(photo)
+        // console.log(followers)
+
+        let card = document.getElementById('card')
+        document.getElementById('display').addEventListener('click',function(e){
+          card.innerHTML = `
+            <img src = "${photo} width = 100 height = 100"<br>
+            <h2>${name}</h2><br>
+            <h2>${followers}</h2>
+          `
+        })
       }
     }
     xhr.send()
-
-
     
-
 </script>
 </html>
